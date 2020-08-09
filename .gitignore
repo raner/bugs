@@ -7,5 +7,4 @@
 **/xtext-resources/generated/
 **/.DS_Store
 **/target/
-**/.settings/
 */**/.gitignore

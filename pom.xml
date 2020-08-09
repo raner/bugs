@@ -32,15 +32,6 @@
    <layout>p2</layout>
   </repository>
   <repository>
-   <!-- Orbit only offers a limited selection of bundles, and the bundles that are available are -->
-   <!-- often out-dated. Currently, all additional bundle dependencies are resolved -->
-   <!-- via <pomDependencies>consider</pomDependencies>, and the Orbit repository is not required -->
-   <!-- anymore. This repository may be removed in the future. -->
-   <id>orbit</id>
-   <url>https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository</url>
-   <layout>p2</layout>
-  </repository>
-  <repository>
    <id>xtext</id>
    <url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext.version}/</url>
    <layout>p2</layout>

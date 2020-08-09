@@ -1,0 +1,11 @@
+**/bin/
+**/src-gen/
+**/xtend-gen/
+**/plugin.xml_gen
+**/.antlr-generator-*.jar
+/.metadata/
+**/xtext-resources/generated/
+**/.DS_Store
+**/target/
+**/.settings/
+*/**/.gitignore

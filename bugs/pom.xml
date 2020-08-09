@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project
+ xmlns="http://maven.apache.org/POM/4.0.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <relativePath>../pom.xml</relativePath>
+  <groupId>top.java</groupId>
+  <artifactId>bugs-parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+ </parent>
+
+ <artifactId>bugs</artifactId>
+ <packaging>eclipse-plugin</packaging>
+
+ <build>
+
+  <resources>
+   <resource>
+    <directory>resources</directory>
+    <filtering>true</filtering>
+   </resource>
+  </resources>
+
+  <plugins>
+   <plugin>
+    <groupId>org.eclipse.xtend</groupId>
+    <artifactId>xtend-maven-plugin</artifactId>
+   </plugin>
+   <plugin>
+    <artifactId>maven-clean-plugin</artifactId>
+    <configuration>
+     <filesets combine.children="append">
+      <fileset>
+       <directory>${basedir}/../bugs/src-gen/</directory>
+       <includes>
+        <include>**/*</include>
+       </includes>
+      </fileset>
+     </filesets>
+    </configuration>
+   </plugin>
+  </plugins>
+
+  <pluginManagement>
+   <plugins>
+    <plugin>
+     <groupId>org.eclipse.m2e</groupId>
+     <artifactId>lifecycle-mapping</artifactId>
+     <version>1.0.0</version>
+     <configuration>
+      <lifecycleMappingMetadata>
+       <pluginExecutions>
+        <pluginExecution>
+         <pluginExecutionFilter>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <versionRange>[1.2.1,)</versionRange>
+          <goals>
+           <goal>java</goal>
+          </goals>
+         </pluginExecutionFilter>
+         <action>
+          <ignore/>
+         </action>
+        </pluginExecution>
+       </pluginExecutions>
+      </lifecycleMappingMetadata>
+     </configuration>
+    </plugin>
+   </plugins>
+  </pluginManagement>
+
+ </build>
+
+</project>

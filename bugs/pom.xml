@@ -6,66 +6,72 @@
 
  <modelVersion>4.0.0</modelVersion>
 
- <parent>
-  <relativePath>../pom.xml</relativePath>
-  <groupId>top.java</groupId>
-  <artifactId>bugs-parent</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
- </parent>
-
+ <groupId>top.java</groupId>
  <artifactId>bugs</artifactId>
+ <version>1.0.0-SNAPSHOT</version>
+
  <packaging>eclipse-plugin</packaging>
+
+ <properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <maven.compiler.source>9</maven.compiler.source>
+  <maven.compiler.target>9</maven.compiler.target>
+  <maven.compiler.release>9</maven.compiler.release>
+  <tycho.version>2.0.0-SNAPSHOT</tycho.version>
+  <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+ </properties>
+
+ <repositories>
+  <repository>
+   <id>eclipse</id>
+   <url>https://download.eclipse.org/releases/2020-06/</url>
+   <layout>p2</layout>
+  </repository>
+ </repositories>
+
+ <pluginRepositories>
+  <pluginRepository>
+   <id>tycho-snapshots</id>
+   <url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+  </pluginRepository>
+ </pluginRepositories>
 
  <build>
 
   <plugins>
    <plugin>
-    <groupId>org.eclipse.xtend</groupId>
-    <artifactId>xtend-maven-plugin</artifactId>
+    <groupId>org.eclipse.tycho</groupId>
+    <artifactId>tycho-maven-plugin</artifactId>
+    <version>${tycho.version}</version>
+    <extensions>true</extensions>
    </plugin>
    <plugin>
-    <artifactId>maven-clean-plugin</artifactId>
+    <groupId>org.eclipse.tycho</groupId>
+    <artifactId>target-platform-configuration</artifactId>
+    <version>${tycho.version}</version>
     <configuration>
-     <filesets combine.children="append">
-      <fileset>
-       <directory>${basedir}/../bugs/src-gen/</directory>
-       <includes>
-        <include>**/*</include>
-       </includes>
-      </fileset>
-     </filesets>
+     <pomDependencies>consider</pomDependencies>
+     <executionEnvironment>JavaSE-9</executionEnvironment>
+     <environments>
+      <environment>
+       <os>win32</os>
+       <ws>win32</ws>
+       <arch>x86_64</arch>
+      </environment>
+      <environment>
+       <os>linux</os>
+       <ws>gtk</ws>
+       <arch>x86_64</arch>
+      </environment>
+      <environment>
+       <os>macosx</os>
+       <ws>cocoa</ws>
+       <arch>x86_64</arch>
+      </environment>
+     </environments>
     </configuration>
    </plugin>
   </plugins>
-
-  <pluginManagement>
-   <plugins>
-    <plugin>
-     <groupId>org.eclipse.m2e</groupId>
-     <artifactId>lifecycle-mapping</artifactId>
-     <version>1.0.0</version>
-     <configuration>
-      <lifecycleMappingMetadata>
-       <pluginExecutions>
-        <pluginExecution>
-         <pluginExecutionFilter>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>exec-maven-plugin</artifactId>
-          <versionRange>[1.2.1,)</versionRange>
-          <goals>
-           <goal>java</goal>
-          </goals>
-         </pluginExecutionFilter>
-         <action>
-          <ignore/>
-         </action>
-        </pluginExecution>
-       </pluginExecutions>
-      </lifecycleMappingMetadata>
-     </configuration>
-    </plugin>
-   </plugins>
-  </pluginManagement>
 
  </build>
 

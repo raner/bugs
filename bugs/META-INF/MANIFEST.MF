@@ -6,6 +6,5 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: bugs; singleton:=true
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: bugs
-Require-Bundle: org.eclipse.xtend.lib; bundle-version="2.22.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-9
 Export-Package: top.java
